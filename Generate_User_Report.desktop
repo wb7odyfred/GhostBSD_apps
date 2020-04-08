@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Version=1.0
+Name=Generate GhostBSD User configuration Report
+Comment=creates a single GhostBSD config file report that can be shared from User_Report.sh shell script
+Exec=python /usr/share/generate_user_report/User_Report.py
+Icon=/usr/share/generate_user_report/applets-screnshooter.png
+Path=/usr/share/generate_user_report/
+Terminal=false
+Categories=Utility;Application;
+#Jason, [05.04.20 18:09]
+#quick search you create a .Desktop file as like the below:[Desktop Entry]
