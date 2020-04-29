@@ -1,5 +1,5 @@
 #!/bin/sh
-## User_report.sh  > Report_$(hostname)_$(date +%F) && gzip Report_$(hostname)_$(date +%F)
+## User_Report.sh  > Report_$(hostname)_$(date +%F) && gzip Report_$(hostname)_$(date +%F)
 
 
 
