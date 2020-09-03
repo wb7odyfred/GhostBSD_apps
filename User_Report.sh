@@ -80,7 +80,7 @@ printf ' - SECT01 : CONFIGURATION:\n/boot/loader.conf /etc/rc.conf /etc/pf.conf 
 \n - SECT06 : X11 SETTING:\n' | fold -s 
 readlink -f  /usr/local/etc/X11/xorg.conf.d/*
 printf '\n - SECT07 : BOOT dmesg: /var/run/dmesg.boot
-\n - SECT08 : FILE PERMISSION \n - SECT09: FILES OPENRC '
+\n - SECT08 : FILE PERMISSION \n - SECT09 : FILES OPENRC '
 printf "$LIN1"
 printf "$FL"
 #
