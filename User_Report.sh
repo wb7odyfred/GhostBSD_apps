@@ -1,5 +1,8 @@
 #!/bin/sh
-## User_Report.sh  > Report_$(hostname)_$(date +%F) && gzip Report_$(hostname)_$(date +%F)
+## /bin/sh User_Report.sh  > Report_$(hostname)_$(date +%F) && /bin/sh gzip -fk Report_$(hostname)_$(date +%F)
+## for /usr/local/bin/fish default shell use the line below
+## /bin/sh User_Report.sh  > Report_(hostname)_(date +%F) && gzip -fk Report_(hostname)_(date +%F)
+## original idea from   https://revadig.blogspot.com/2019/09/freebsd-workstation-user-report.html 
 
 
 
@@ -7,7 +10,7 @@
 
 
 #!/bin/sh
-# FreeBSD Workstation user report
+# GhostBSD Workstation user report placed in configuration file and gzipped
 #
 # Section dividers
 DEV1=" # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #\n #############################################################\n"
@@ -22,7 +25,7 @@ LIN2=' # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #\n\n'
 #
 FL='\n\n\n\n'
 #
-printf "\t####  FreeBSD  OS  &  WORKSTATION  INFO  ####\n" 
+printf "\t####  GhostBSD  OS  &  WORKSTATION  INFO  ####\n" 
 printf "\n\t\t$(date)\n\n"
 printf "$LIN1"
 echo ' Hostname: ' $(hostname -s)  '       Domain: ' $(hostname -d)
@@ -35,14 +38,14 @@ printf "$LIN1"
 echo ' Which user:   $ USER: '  $(echo $USER)  '   whoami: ' $(whoami)    '   $ LOGNAME: ' $LOGNAME 
 printf "$LIN2"
 printf "$LIN1"
-printf ' FreeBSD - freebsd-version utility\n Version and patch level of the installed system' 
+printf ' GhostBSD - Ghostbsd-version utility\n Version and patch level of the installed system' 
 printf "$LIN1"
 echo ' - Installed kernel : ' $(freebsd-version -k)
 echo ' - Running kernel :   ' $(freebsd-version -r)
 echo ' - Userland :         ' $(freebsd-version -u)   
 printf "$LIN2"
 printf "$LIN1"
-printf ' FreeBSD - uname command - Information about the system'
+printf ' GhostBSD - uname command - Information about the system'
 printf "$LIN1"
 echo ' - Kernel ident : ' $(uname -i)
 echo ' - Kernel version : ' $(uname -K) 
@@ -51,7 +54,7 @@ echo ' - Name of the system: ' $(uname -n)
 echo ' - Machine processor architecture : ' $(uname -p)
 echo ' - Release level of the OS : ' $(uname -r) 
 echo ' - Name of the OS implementation: ' $(uname -s) 
-echo ' - FreeBSD version of the user environment : ' $(uname -U)
+echo ' - GhostBSD version of the user environment : ' $(uname -U)
 echo ' - Version level of this release of the OS :' 
 echo ' '$(uname -v)  | fold -s
 printf "$LIN2"
@@ -71,7 +74,7 @@ printf '\t\t\tSETTINGS'
 printf "$LIN1"
 printf ' - SECT01 : CONFIGURATION:\n/boot/loader.conf /etc/rc.conf /etc/pf.conf /etc/fstab /etc/sysctl.conf /etc/rc.local /etc/rc.d/local
 \n - SECT02 : OpenSSH SETTING:\n/etc/ssh/ssh_config  /etc/ssh/sshd_config 
-\n - SECT03 : NETWORK SETTING:\nifconfig /etc/resolv.conf /var/unbound/unbound.conf /etc/ppp/ppp.conf
+\n - SECT03 : NETWORK SETTING:\nifconfig /etc/resolv.conf /var/unbound/unbound.conf /etc/ppp/ppp.conf /etc/wpa_supplicant.conf
 \n - SECT04 : APPLICATIONS & INSTALLED PACKAGES
 \n - SECT05 : PERSONAL SETTING:\n~/.bashrc ~/.bash_aliases ~/.bash_history ~/.cshrc ~/.shrc  ~/.history  ~/.profile ~/.xsession ~/.xinitrc ~/.Xdefaults ~/.xpdfrc ~/.vimrc ~/.tmux.conf ~/.xbindkeysrc ~/.lynx.cfg ~/.elinks/elinks.conf ~/.links/links.cfg ~/.links/html.cfg
 \n - SECT06 : X11 SETTING:\n' | fold -s 
@@ -171,6 +174,12 @@ printf "$LIN1"
 printf ' /etc/ppp/ppp.conf  :\n'
 printf "$LIN2"
 cat /etc/ppp/ppp.conf
+printf "$LIN1"
+printf "$FL"
+printf "$LIN1"
+printf ' /etc/wpa_supplicant.conf  :\n'
+printf "$LIN2"
+cat /etc/wpa_supplicant.conf
 printf "$LIN1"
 printf "$FL"
 #
@@ -298,7 +307,7 @@ printf "$FL"
 printf "$LIN1"
 printf ' CONFIGURATION - FILE PERMISSION:\n'
 printf "$LIN2"
-ls -l /boot/loader.conf  /etc/rc.conf   /etc/pf.conf   /etc/fstab   /etc/sysctl.conf   /etc/rc.local  /etc/rc.d/local
+ls -l /boot/loader.conf  /etc/rc.conf   /etc/pf.conf   /etc/fstab   /etc/sysctl.conf   /etc/rc.local  /etc/rc.d/local  /etc/openrc /etc/openrc.shutdown
 printf "$LIN1"
 printf "$FL"
 printf "$LIN1"
@@ -310,7 +319,7 @@ printf "$FL"
 printf "$LIN1"
 printf ' Network SETTING - FILE PERMISSION:\n'
 printf "$LIN2"
-ls -l /etc/resolv.conf /var/unbound/  /etc/ppp/
+ls -l /etc/resolv.conf /var/unbound/  /etc/ppp/  /etc/wpa_supplicant.conf
 printf "$LIN1"
 printf "$FL"
 printf "$LIN1"
@@ -319,7 +328,32 @@ printf "$LIN2"
 for i in $(readlink -f /usr/local/etc/X11/*) ; do ls -l "$i" ; done
 printf "$LIN1"
 printf "$FL"
+#
+printf "$DEV1"
+printf ' SECT09 - FILE OPENRC\n'
+printf "$DEV2"
+printf "$FL"
+printf "$LIN1"
+printf ' OPENRC - FILE PERMISSION:\n'
+printf "$LIN2"
+for i in $(readlink -f /etc/openrc*) ; do ls -l "$i" ; done
+printf "$LIN1"
+printf "$FL"
+printf "$LIN1"
+printf ' OpenRC - FILE Contents:\n'
+printf "$LIN2"
+printf "$LIN1"
+printf ' /etc/openrc  :\n'
+printf "$LIN2"
+cat /etc/openrc
+printf "$LIN1"
+printf "$FL"
+printf "$LIN1"
+printf ' /etc/openrc.shutdown  :\n'
+printf "$LIN2"
+cat /etc/openrc.shutdown
+printf "$LIN1"
+printf "$FL"
 printf "\n$(date)\n\nEOF"
 printf "$FL"
-
 

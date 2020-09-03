@@ -14,7 +14,7 @@ class MyWindow(Gtk.Window):
 
     def on_button_clicked(self, widget):
 #        os.system('/bin/sh /usr/share/generate_user_report/User_Report.sh')
-        os.system('/bin/sh /usr/share/generate_user_report/User_Report.sh > ~/Desktop/Report_$(hostname)_$(date +%F) && gzip ~/Desktop/Report_$(hostname)_$(date +%F)')
+        os.system('/bin/sh /usr/share/generate_user_report/User_Report.sh > ~/Desktop/Report_$(hostname)_$(date +%F) && gzip -fk ~/Desktop/Report_$(hostname)_$(date +%F)')
 
 win = MyWindow()
 win.connect("destroy", Gtk.main_quit)
