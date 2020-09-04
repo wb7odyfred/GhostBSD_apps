@@ -80,7 +80,7 @@ printf ' - SECT01 : CONFIGURATION:\n/boot/loader.conf /etc/rc.conf /etc/pf.conf 
 \n - SECT06 : X11 SETTING:\n' | fold -s 
 readlink -f  /usr/local/etc/X11/xorg.conf.d/*
 printf '\n - SECT07 : BOOT dmesg: /var/run/dmesg.boot
-\n - SECT08 : FILE PERMISSION \n - SECT09 : FILES OPENRC \n - SECT10 : DEVICES PCI & USB '
+\n - SECT08 : FILE PERMISSION \n - SECT09 : FILES OPENRC \n - SECT10 : DEVICES PCI & USB \n - SECT11 : Xorg log '
 printf "$LIN1"
 printf "$FL"
 #
@@ -372,6 +372,17 @@ printf "$LIN2"
 usbconfig list
 printf "$LIN1"
 usbconfig dump_device_desc
+printf "$LIN1"
+printf "$FL"
+#
+printf "$DEV1"
+printf ' SECT11 - Xorg Log\n'
+printf "$DEV2"
+printf "$FL"
+printf "$LIN1"
+printf ' Xorg: /var/log/Xorg.0.log\n'
+printf "$LIN2"
+cat /var/log/Xorg.0.log
 printf "$LIN1"
 printf "$FL"
 #
