@@ -80,7 +80,7 @@ printf ' - SECT01 : CONFIGURATION:\n/boot/loader.conf /etc/rc.conf /etc/pf.conf 
 \n - SECT06 : X11 SETTING:\n' | fold -s 
 readlink -f  /usr/local/etc/X11/xorg.conf.d/*
 printf '\n - SECT07 : BOOT dmesg: /var/run/dmesg.boot
-\n - SECT08 : FILE PERMISSION \n - SECT09 : FILES OPENRC \n - SECT10 : DEVICES PCI & USB \n - SECT11 : Xorg log '
+\n - SECT08 : FILE PERMISSION \n - SECT09 : FILES RC \n - SECT10 : DEVICES PCI & USB \n - SECT11 : Xorg log '
 printf "$LIN1"
 printf "$FL"
 #
@@ -307,7 +307,7 @@ printf "$FL"
 printf "$LIN1"
 printf ' CONFIGURATION - FILE PERMISSION:\n'
 printf "$LIN2"
-ls -l /boot/loader.conf  /etc/rc.conf   /etc/pf.conf   /etc/fstab   /etc/sysctl.conf   /etc/rc.local  /etc/rc.d/local  /etc/openrc /etc/openrc.shutdown
+ls -l /boot/loader.conf  /etc/rc.conf   /etc/pf.conf   /etc/fstab   /etc/sysctl.conf   /etc/rc.local  /etc/rc.d/local  /etc/rc /etc/rc.shutdown
 printf "$LIN1"
 printf "$FL"
 printf "$LIN1"
@@ -330,28 +330,28 @@ printf "$LIN1"
 printf "$FL"
 #
 printf "$DEV1"
-printf ' SECT09 - FILE OPENRC\n'
+printf ' SECT09 - FILE RC\n'
 printf "$DEV2"
 printf "$FL"
 printf "$LIN1"
-printf ' OPENRC - FILE PERMISSION:\n'
+printf ' RC - FILE PERMISSION:\n'
 printf "$LIN2"
-for i in $(readlink -f /etc/openrc*) ; do ls -l "$i" ; done
+for i in $(readlink -f /etc/rc*) ; do ls -l "$i" ; done
 printf "$LIN1"
 printf "$FL"
 printf "$LIN1"
-printf ' OpenRC - FILE Contents:\n'
+printf ' RC - FILE Contents:\n'
 printf "$LIN2"
 printf "$LIN1"
-printf ' /etc/openrc  :\n'
+printf ' /etc/rc  :\n'
 printf "$LIN2"
-cat /etc/openrc
+cat /etc/rc
 printf "$LIN1"
 printf "$FL"
 printf "$LIN1"
-printf ' /etc/openrc.shutdown  :\n'
+printf ' /etc/rc.shutdown  :\n'
 printf "$LIN2"
-cat /etc/openrc.shutdown
+cat /etc/rc.shutdown
 printf "$LIN1"
 printf "$FL"
 #
