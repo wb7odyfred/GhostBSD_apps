@@ -1,0 +1,12 @@
+GURU
+
+New GUI users can just click on the Desktop icon after installation to create a User_Report.txt file
+
+CLI users can just execute the shell script like this:
+
+/bin/sh User_Report.sh > Report_$(hostname)$(date +%F) && gzip Report_$(hostname)$(date +%F)
+
+
+CLI users can access guru, via ssh onto the remote computer over the network. So you don't need a 'TigerVNC' or remote GUI desktop to easily use the Generate_User_Report application.
+
+

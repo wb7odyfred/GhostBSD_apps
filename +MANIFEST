@@ -1,0 +1,16 @@
+name: generate_user_report
+version: "1.0_2"
+origin: sysutils/generate_user_report
+comment: "Generate User Report for Upload, (GURU)"
+desc: "GURU documents all your configuration files for examination and comparison and sharing with others"
+maintainer: fredfinster58@gmail.com
+www: https://github.com/wb7odyfred/Ghostbsd_apps/generate_user_report/
+prefix: /usr/local
+deps: {
+}
+files: {
+#  see plist file contents
+}
+scripts: {
+    install: "#!/bin/sh\n\ncase \"$2\" in\n    PRE-INSTALL)\n    if [ ! -d ~/Desktop ] ; then\n        mkdir -p ~/Desktop\n    fi\n    ;;\n    POST-INSTALL)\n    cp /usr/local/share/applications/generate_user_report.desktop ~/Desktop/generate_user_report.desktop\n cp /usr/local/lib/generate_user_report/Report_fred-ghostbsd-pc1_2020-04-05_example.txt    ~/Desktop/Report_fred-ghostbsd-pc1_2020-04-05_example.txt \n  ;;\nesac\n\nexit 0"
+}

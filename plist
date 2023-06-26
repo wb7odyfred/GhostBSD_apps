@@ -1,0 +1,11 @@
+/usr/local/etc/my.conf
+./share/applications/generate_user_report.desktop
+./lib/generate_user_report/Makefile
+./lib/generate_user_report/README.md
+./lib/generate_user_report/Report_fred-ghostbsd-pc1_2020-04-05_example.txt
+./lib/generate_user_report/User_Report.py
+./lib/generate_user_report/User_Report.sh
+./lib/generate_user_report/User_Report_FreeBSD.sh
+./lib/generate_user_report/User_Report_Debian.sh
+./lib/generate_user_report/applets-screenshooter.png
+
