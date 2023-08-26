@@ -67,6 +67,7 @@ class MyWindow(Gtk.Window):
 
     def on_button_clicked(self, widget):
 #        os.system('/bin/sh /usr/share/generate_user_report/User_Report.sh')  #  Create a Report_hostname_date.txt file on the Desktop  Gzip that Report.txt file into Report.txt.gz file
+#        os.system('/bin/sh /usr/local/lib/generate_user_report/User_Report.sh > ~/Desktop/Report_$(hostname)_$(date +%F).txt && gzip -fk ~/Desktop/Report_$(hostname)_$(date +%F).txt')
 #       check for ghostbsd , else freebsd, check for  debian  
          if 'ghostbsd' in [os_release.get('ID', 'ghostbsd'), 
                 *os_release.get('ID_LIKE', '').split()]:
