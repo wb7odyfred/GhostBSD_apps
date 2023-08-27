@@ -22,7 +22,9 @@ The Gnome .desktop file (Generate_User_Report.desktop) for this clickable deskto
 to start the User_Report.py report creation.
 * Report_fred-ghostbsd-pc1_2020-04-05.txt  A sample output file, that collects all the configuration data in one file, to report computer status
 * User_Report.py   a python program to  run the shell script file User_Report.sh  
-* User_Report.sh   The orginal FreeBSD shell script was taken from this blog  `https://revadig.blogspot.com/2019/09/freebsd-workstation-user-report.html`  Now updated to work with GhostBSD O/S.
+* User_Report.sh   The orginal FreeBSD shell script was taken from this blog  https://revadig.blogspot.com/2019/09/freebsd-workstation-user-report.html  Now updated to work with GhostBSD O/S.
+* User_Report_FreeBSD.sh  The original FreeBSD shell script file.  Ready to use on FreeBSD operating systems
+* User_Report_Debian.sh   Needs to be modified and tested on a Debian like operating system for functionality
 
 Examples of shell script usage without Python to generate and create the "Report Computer Status".  One line uses /bin/sh inside a shell script file.  The 2nd line uses the GhostBSD standard "Fish Shell" to generate and create the "Report Computer Status"   The 3rd line, use the shell script files in their original locations.
 
